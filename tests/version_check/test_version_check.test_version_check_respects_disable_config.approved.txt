@@ -1,2 +1,2 @@
 DEBUG: Version prompt disabled
-DEBUG: No .algokit.toml file found in the project directory.
+DEBUG: No .algorun.toml file found in the project directory.

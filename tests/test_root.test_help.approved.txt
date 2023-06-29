@@ -1,10 +1,11 @@
-Usage: algokit [OPTIONS] COMMAND [ARGS]...
+Usage: algorun [OPTIONS] COMMAND [ARGS]...
 
-  AlgoKit is your one-stop shop to develop applications on the Algorand
-  blockchain.
-
-  If you are getting started, please see the quick start tutorial:
-  https://bit.ly/algokit-intro-tutorial.
+  ░█████╗░██╗░░░░░░██████╗░░█████╗░██████╗░░█████╗░███╗░░██╗██████╗░
+  ██╔══██╗██║░░░░░██╔════╝░██╔══██╗██╔══██╗██╔══██╗████╗░██║██╔══██╗
+  ███████║██║░░░░░██║░░██╗░██║░░██║██████╔╝███████║██╔██╗██║██║░░██║
+  ██╔══██║██║░░░░░██║░░╚██╗██║░░██║██╔══██╗██╔══██║██║╚████║██║░░██║
+  ██║░░██║███████╗╚██████╔╝╚█████╔╝██║░░██║██║░░██║██║░╚███║██████╔╝
+  ╚═╝░░╚═╝╚══════╝░╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═════╝░
 
 Options:
   --version             Show the version and exit.
@@ -14,14 +15,6 @@ Options:
   -h, --help            Show this message and exit.
 
 Commands:
-  bootstrap    Bootstrap local dependencies in an AlgoKit project; run from
-               project root directory.
-  completions  Install and Uninstall AlgoKit shell integrations.
-  config       Configure AlgoKit settings.
-  doctor       Diagnose potential environment issues that may affect AlgoKit
-  explore      Explore the specified network in the browser using Dappflow.
-  generate     Generate code for an Algorand project.
-  goal         Run the Algorand goal CLI against the AlgoKit LocalNet.
-  init         Initializes a new project from a template; run from project
-               parent directory.
-  localnet     Manage the AlgoKit LocalNet.
+  goal   Run the Algorand goal CLI against your mainnet node.
+  start  Start your Algorand mainnet node
+  stop   Stop your Algorand mainnet node
