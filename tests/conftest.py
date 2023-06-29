@@ -8,7 +8,6 @@ from pathlib import Path
 
 import pytest
 import questionary
-from algorun.core import questionary_extensions
 from approvaltests import Reporter, reporters, set_default_reporter
 from approvaltests.reporters.generic_diff_reporter_config import create_config
 from approvaltests.reporters.generic_diff_reporter_factory import GenericDiffReporter

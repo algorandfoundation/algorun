@@ -14,7 +14,7 @@ Algorun also has some runtime dependencies that also need to be available for pa
 
 - Docker - Docker Compose (and by association, Docker) is used to run the Algorand mainnet container, we require Docker Compose 2.5.0+
 
-## Install AlgoKit with pipx on any Mac, Linux and Windows subsystem for Linux
+## Install Algorun with pipx on any Mac, Linux and Windows subsystem for Linux
 
 1. Ensure desired prerequisites are installed
 

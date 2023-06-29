@@ -13,6 +13,7 @@ else:
     import tomli as tomllib
 from packaging import version
 
+from algorun.core import proc
 from algorun.core.conf import get_current_package_version
 
 ENV_TEMPLATE = ".env.template"
@@ -229,11 +230,11 @@ def _get_base_python_path() -> str | None:
 
 def get_min_algorun_version(project_dir: Path) -> str | None:
     try:
-        config_path = project_dir / algorun_CONFIG
+        config_path = project_dir / ALGORUN_CONFIG
         try:
             config_text = config_path.read_text("utf-8")
         except FileNotFoundError:
-            logger.debug(f"No {algorun_CONFIG} file found in the project directory.")
+            logger.debug(f"No {ALGORUN_CONFIG} file found in the project directory.")
             return None
 
         config = tomllib.loads(config_text)
@@ -241,7 +242,7 @@ def get_min_algorun_version(project_dir: Path) -> str | None:
         try:
             min_version = config["algorun"]["min_version"]
         except KeyError:
-            logger.debug(f"No 'min_version' specified in {algorun_CONFIG} file.")
+            logger.debug(f"No 'min_version' specified in {ALGORUN_CONFIG} file.")
             return None
         assert isinstance(min_version, str)
 
