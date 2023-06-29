@@ -13,7 +13,7 @@ else:
     import tomli as tomllib
 from packaging import version
 
-from algorun.core import proc
+from algorun.core import proc, questionary_extensions
 from algorun.core.conf import get_current_package_version
 
 ENV_TEMPLATE = ".env.template"

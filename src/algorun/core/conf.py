@@ -8,13 +8,7 @@ PACKAGE_NAME = "algorun"
 
 def get_app_config_dir() -> Path:
     """Get the application config files location - things that should persist, and potentially follow a user"""
-    os_type = platform.system().lower()
-    if os_type == "windows":
-        config_dir = os.getcwd()
-    else:
-        config_dir = os.getcwd()
-    if config_dir is None:
-        config_dir = os.getcwd()
+    config_dir = os.getcwd()
     return Path(config_dir)
 
 
