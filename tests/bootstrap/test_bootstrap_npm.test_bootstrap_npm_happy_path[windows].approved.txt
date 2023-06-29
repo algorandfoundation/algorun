@@ -1,0 +1,5 @@
+DEBUG: No .algokit.toml file found in the project directory.
+Installing npm dependencies
+DEBUG: Running 'npm.cmd install' in '{current_working_directory}'
+npm.cmd: STDOUT
+npm.cmd: STDERR

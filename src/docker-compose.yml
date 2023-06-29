@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  algod:
+    container_name: mainnet-container
+    image: algorand/algod:latest
+    ports:
+      - 4190:8080
+    environment:
+      - NETWORK=mainnet
+      - FAST_CATCHUP=1
+      - PROFILE=participation
+    volumes:
+      - ${PWD}/data:/algod/data/:rw
+      - ${PWD}/config.json:/etc/algorand/config.json:rw
+
+networks:
+  host:
+    external: true
