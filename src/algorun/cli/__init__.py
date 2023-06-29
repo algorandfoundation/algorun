@@ -1,5 +1,6 @@
 import click
 
+from algorun.cli.bootstrap import bootstrap_group
 from algorun.cli.goal import goal_command
 from algorun.cli.start import start_command
 from algorun.cli.stop import stop_command
@@ -33,3 +34,4 @@ def algorun(*, skip_version_check: bool) -> None:
 algorun.add_command(start_command)
 algorun.add_command(stop_command)
 algorun.add_command(goal_command)
+algorun.add_command(bootstrap_group)
