@@ -8,8 +8,9 @@ on:
     inputs:
       production_release:
         description: "Production release?"
+        type: boolean
         required: true
-        default: "true"
+        default: true
 
 concurrency: release
 
@@ -58,40 +59,23 @@ jobs:
       - name: Set Git user as GitHub actions
         run: git config --global user.email "actions@github.com" && git config --global user.name "github-actions"
 
-      - name: Create Continuous Deployment - Feature Branch
-        if: steps.get_branch.outputs.branch != 'main' && inputs.production_release != 'true'
-        run: |
-          poetry run semantic-release \
-            -v DEBUG \
-            --prerelease \
-            --patch \
-            --define=prerelease_tag=beta+${{ steps.get_branch.outputs.branch }} \
-            --define=branch=${{ steps.get_branch.outputs.branch }} \
-            publish
-          gh release edit --prerelease "$(git describe $(git rev-list --tags --max-count=1))"
-        # --define=upload_to_repository=true \
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPOSITORY_USERNAME: __token__
-          REPOSITORY_PASSWORD: ${{ secrets.PYPI_API_KEY }}
-
       - name: Create Continuous Deployment - Beta (non-prod)
-        if: steps.get_branch.outputs.branch == 'main' && inputs.production_release != 'true'
+        if: steps.get_branch.outputs.branch == 'main' && !inputs.production_release
         run: |
           poetry run semantic-release \
             -v DEBUG \
             --prerelease \
             --define=branch=main \
+            --define=upload_to_repository=true \
             publish
           gh release edit --prerelease "v$(poetry run semantic-release print-version --current)"
-        # --define=upload_to_repository=true \
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY_USERNAME: __token__
           REPOSITORY_PASSWORD: ${{ secrets.PYPI_API_KEY }}
 
       - name: Create Continuous Deployment - Production
-        if: steps.get_branch.outputs.branch == 'main' && inputs.production_release == 'true'
+        if: steps.get_branch.outputs.branch == 'main' && inputs.production_release
         run: |
           poetry run semantic-release \
             -v DEBUG \
@@ -104,20 +88,3 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY_USERNAME: __token__
           REPOSITORY_PASSWORD: ${{ secrets.PYPI_API_KEY }}
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: algorun
-          path: dist/algorun*-py3-none-any.whl
-          if-no-files-found: error
-
-  cd-publish-release-packages:
-    name: Publish Release Packages
-    needs: release
-    # if: ${{ github.ref_name == 'chocolatey-package' }} && inputs.production_release != 'true' # used to test manual release from a branch
-    if: ${{ github.ref_name == 'main' && inputs.production_release == 'true' }} # Might want to adjust this to publish (pre-release) on merge as well.
-    uses: ./.github/workflows/publish-release-packages.yaml
-    with:
-      artifactName: algorun
-    secrets: inherit
