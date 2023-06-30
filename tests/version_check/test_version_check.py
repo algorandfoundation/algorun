@@ -47,7 +47,7 @@ def test_version_check_queries_github_when_no_cache(app_dir_mock: AppDirs, httpx
 @pytest.mark.parametrize(
     ("current_version", "latest_version", "warning_expected"),
     [
-        ("0.1.0", "0.3.0", True),
+        ("0.2.0", "0.3.0", True),
         ("0.25.0", "0.30.0", True),
         ("0.3.0", "0.29.0", True),
         ("999.99.99", "1000.00.00", True),

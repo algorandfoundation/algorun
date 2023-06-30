@@ -15,6 +15,7 @@ Options:
   -h, --help            Show this message and exit.
 
 Commands:
+  bootstrap  Bootstrap local dependencies in an algorun project; run from project root directory.
   goal   Run the Algorand goal CLI against your mainnet node.
   start  Start your Algorand mainnet node
   stop   Stop your Algorand mainnet node
