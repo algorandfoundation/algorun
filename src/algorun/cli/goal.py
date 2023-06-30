@@ -1,6 +1,7 @@
 import logging
 
 import click
+
 from algorun.core import proc
 from algorun.core.sandbox import ComposeSandbox
 
@@ -58,7 +59,7 @@ def goal_command(*, console: bool, goal_args: list[str]) -> None:
                 pass  # container is running, failure must have been with command
             case _:
                 logger.warning(
-                    "algod container does not appear to be running, "
+                    "mainnet-container does not appear to be running, "
                     "ensure mainnet node is started by executing `algorun start`"
                 )
         raise click.exceptions.Exit(result.exit_code)  # pass on the exit code
