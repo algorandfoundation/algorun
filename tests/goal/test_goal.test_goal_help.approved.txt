@@ -1,0 +1,11 @@
+Usage: algokit goal [OPTIONS] [GOAL_ARGS]...
+
+  Run the Algorand goal CLI against the AlgoKit LocalNet.
+
+  Look at https://developer.algorand.org/docs/clis/goal/goal/ for more
+  information.
+
+Options:
+  --console   Open a Bash console so you can execute multiple goal commands
+              and/or interact with a filesystem.
+  -h, --help  Show this message and exit.
